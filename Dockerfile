@@ -19,9 +19,10 @@ RUN cd /tmp && git clone --depth=1 https://github.com/jenicek/asmk.git && cd asm
 RUN git clone --depth=1 https://github.com/naver/croco.git /croco && \
     cd /croco/models/curope/ && python3 setup.py build_ext --inplace
 
-# RUN pip3 install -v roma gradio matplotlib tqdm opencv-python scipy einops trimesh
-# RUN pip3 install -v tensorboard "pyglet<2" "huggingface-hub[torch]>=0.22" pillow-heif
-# RUN pip3 install -v pyrender kapture kapture-localization numpy-quaternion
+RUN pip3 install -v roma matplotlib tqdm opencv-python einops trimesh
+RUN pip3 install -v tensorboard "pyglet<2" "huggingface-hub[torch]>=0.22" pillow-heif
+RUN pip3 install -v pyrender kapture kapture-localization numpy-quaternion
+RUN pip3 install -v gradio scipy
 # poselib pycolmap
 
 # ADD dust3r/requirements.txt /naver/must3r/dust3r/requirements.txt
