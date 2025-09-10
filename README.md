@@ -1,21 +1,46 @@
+$ neofetch
+
+					.-/+oossssoo+/-.               nvidia@lzc-pod-RElLPO
+				`:+ssssssssssssssssss+:`           ---------------------
+			  -+ssssssssssssssssssyyssss+-         OS: Ubuntu 22.04.5 LTS aarch64
+			.ossssssssssssssssssdMMMNysssso.       Host: NVIDIA Jetson AGX Orin Developer Kit
+		   /ssssssssssshdmmNNmmyNMMMMhssssss/      Kernel: 5.15.148-tegra
+		  +ssssssssshmydMMMMMMMNddddyssssssss+     Uptime: 17 days, 23 hours, 6 mins
+		 /sssssssshNMMMyhhyyyyhmNMMMNhssssssss/    Packages: 2270 (dpkg)
+		.ssssssssdMMMNhsssssssssshNMMMdssssssss.   Shell: bash 5.1.16
+		+sssshhhyNMMNyssssssssssssyNMMMysssssss+   Terminal: /dev/pts/0
+		ossyNMMMNyMMhsssssssssssssshmmmhssssssso   CPU: ARMv8 rev 1 (v8l) (12) @ 2.201GHz
+		ossyNMMMNyMMhsssssssssssssshmmmhssssssso   Memory: 16293MiB / 62841MiB
+		+sssshhhyNMMNyssssssssssssyNMMMysssssss+
+		.ssssssssdMMMNhsssssssssshNMMMdssssssss.
+		 /sssssssshNMMMyhhyyyyhdNMMMNhssssssss/
+		  +sssssssssdmydMMMMMMMMddddyssssssss+
+		   /ssssssssssshdmNNNNmyNMMMMhssssss/
+			.ossssssssssssssssssdMMMNysssso.
+			  -+sssssssssssssssssyyyssss+-
+				`:+ssssssssssssssssss+:`
+					.-/+oossssoo+/-.
+
+---
+
 ![logo](assets/must3r.jpg)
 
-Official implementation of `MUSt3R: Multi-view Network for Stereo 3D Reconstruction`  
-[[Project page](https://europe.naverlabs.com/research/publications/must3r-multi-view-network-for-stereo-3d-reconstruction/)], [[MUSt3R arxiv](https://arxiv.org/abs/2503.01661)]  
+Official implementation of `MUSt3R: Multi-view Network for Stereo 3D Reconstruction`
+[[Project page](https://europe.naverlabs.com/research/publications/must3r-multi-view-network-for-stereo-3d-reconstruction/)], [[MUSt3R arxiv](https://arxiv.org/abs/2503.01661)]
 
 ![examples](assets/examples.jpg)
 ![overview](assets/overview.jpg)
 
 ```bibtex
 @inproceedings{must3r_cvpr25,
-      title={MUSt3R: Multi-view Network for Stereo 3D Reconstruction}, 
+      title={MUSt3R: Multi-view Network for Stereo 3D Reconstruction},
       author={Yohann Cabon and Lucas Stoffl and Leonid Antsfeld and Gabriela Csurka and Boris Chidlovskii and Jerome Revaud and Vincent Leroy},
       booktitle = {CVPR},
       year = {2025}
 }
 
 @misc{must3r_arxiv25,
-      title={MUSt3R: Multi-view Network for Stereo 3D Reconstruction}, 
+      title={MUSt3R: Multi-view Network for Stereo 3D Reconstruction},
       author={Yohann Cabon and Lucas Stoffl and Leonid Antsfeld and Gabriela Csurka and Boris Chidlovskii and Jerome Revaud and Vincent Leroy},
       year={2025},
       eprint={2503.01661},
@@ -40,7 +65,7 @@ Official implementation of `MUSt3R: Multi-view Network for Stereo 3D Reconstruct
   - [Hyperparameters](#hyperparameters)
 
 ## License
-MUSt3R is released under the MUSt3R Non-Commercial License. See [LICENSE](LICENSE) and [NOTICE](NOTICE) for more information.  
+MUSt3R is released under the MUSt3R Non-Commercial License. See [LICENSE](LICENSE) and [NOTICE](NOTICE) for more information.
 [NOTICE](NOTICE) also contains information about the datasets used to train the checkpoints. The mapfree dataset in particular, which was used to train all models, has a very restrictive license.
 
 ## Get Started
@@ -52,7 +77,7 @@ MUSt3R extends the DUSt3R architecture through several modifications: making it 
 #### using setup.py
 ```bash
 micromamba create -n must3r python=3.11 cmake=3.14.0
-micromamba activate must3r 
+micromamba activate must3r
 pip3 install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/cu126 # use the correct version of cuda for your system
 
 # (recommended) if you can, install xFormers for memory-efficient attention
@@ -67,7 +92,7 @@ pip3 install must3r@git+https://github.com/naver/must3r.git
 
 ```bash
 micromamba create -n must3r python=3.11 cmake=3.14.0
-micromamba activate must3r 
+micromamba activate must3r
 pip3 install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/cu126 # use the correct version of cuda for your system
 
 # (recommended) if you can, install xFormers for memory-efficient attention
@@ -83,7 +108,7 @@ pip install -r dust3r/requirements_optional.txt
 pip install -r requirements.txt
 
 # install asmk
-pip install faiss-cpu  # or the officially supported way (not tested): micromamba install -c pytorch faiss-cpu=1.11.0  # faiss-gpu=1.11.0 
+pip install faiss-cpu  # or the officially supported way (not tested): micromamba install -c pytorch faiss-cpu=1.11.0  # faiss-gpu=1.11.0
 mkdir build
 cd build
 git clone https://github.com/jenicek/asmk.git
@@ -108,15 +133,15 @@ We provide several pre-trained models. For these checkpoints, make sure to agree
 | [`MUSt3R_512_cvpr.pth`](https://download.europe.naverlabs.com/ComputerVision/MUSt3R/MUSt3R_512_cvpr.pth)   | 512x384, 512x336, 512x288, 512x256, 512x160 | Linear | ViT-L | ViT-B |
 | [`MUSt3R_512.pth`](https://download.europe.naverlabs.com/ComputerVision/MUSt3R/MUSt3R_512.pth) | 512x384, 512x336, 512x288, 512x256, 512x160 | Linear | ViT-L | ViT-B |
 
-`MUSt3R_224_cvpr` and `MUSt3R_512_cvpr` are the same checkpoints that we evaluated for CVPR.  
+`MUSt3R_224_cvpr` and `MUSt3R_512_cvpr` are the same checkpoints that we evaluated for CVPR.
 `MUSt3R_512` was finetuned from `MUSt3R_512_cvpr` with updated hyperparamers (20 views instead of 10, bf16, less token dropout, also see training section) and additional datasets (higher resolution version of [ARKitScenes](https://github.com/apple/ARKitScenes) from the depth upsample subset, updated [ScanNet++](https://kaldir.vc.in.tum.de/scannetpp/) to v2, added back [Virtual Kitti 2](https://europe.naverlabs.com/proxy-virtual-worlds-vkitti-2/), some scenes from [Hypersim](https://github.com/apple/ml-hypersim), and generated scenes with [InfiniGen](https://github.com/princeton-vl/infinigen)). It outperforms `MUSt3R_512_cvpr` in most of the evaluations (see [the updated evaluations](assets/evals.md)).
 
-We also provide both the trainingfree.pth and codebook.pkl files necessary to run image retrieval. `MUSt3R_512_cvpr` and `MUSt3R_512` share the same encoder so there's only one set of files for both of them.  
-[`MUSt3R_224_retrieval_trainingfree.pth`](https://download.europe.naverlabs.com/ComputerVision/MUSt3R/MUSt3R_224_retrieval_trainingfree.pth)  
-[`MUSt3R_224_retrieval_codebook.pkl`](https://download.europe.naverlabs.com/ComputerVision/MUSt3R/MUSt3R_224_retrieval_codebook.pkl)  
+We also provide both the trainingfree.pth and codebook.pkl files necessary to run image retrieval. `MUSt3R_512_cvpr` and `MUSt3R_512` share the same encoder so there's only one set of files for both of them.
+[`MUSt3R_224_retrieval_trainingfree.pth`](https://download.europe.naverlabs.com/ComputerVision/MUSt3R/MUSt3R_224_retrieval_trainingfree.pth)
+[`MUSt3R_224_retrieval_codebook.pkl`](https://download.europe.naverlabs.com/ComputerVision/MUSt3R/MUSt3R_224_retrieval_codebook.pkl)
 
-[`MUSt3R_512_retrieval_trainingfree.pth`](https://download.europe.naverlabs.com/ComputerVision/MUSt3R/MUSt3R_512_retrieval_trainingfree.pth)  
-[`MUSt3R_512_retrieval_codebook.pkl`](https://download.europe.naverlabs.com/ComputerVision/MUSt3R/MUSt3R_512_retrieval_codebook.pkl)  
+[`MUSt3R_512_retrieval_trainingfree.pth`](https://download.europe.naverlabs.com/ComputerVision/MUSt3R/MUSt3R_512_retrieval_trainingfree.pth)
+[`MUSt3R_512_retrieval_codebook.pkl`](https://download.europe.naverlabs.com/ComputerVision/MUSt3R/MUSt3R_512_retrieval_codebook.pkl)
 
 ```
 MD5 checksums (https://download.europe.naverlabs.com/ComputerVision/MUSt3R/checksums.txt):
@@ -138,7 +163,7 @@ f7c133906bcfd4fe6ee157a9ffa85a23  MUSt3R_512_retrieval_trainingfree.pth
 By default, `demo.py` will open a gradio instance on localhost:7860. If you launch the demo with `--viser`, it will also lauch a viser instance on localhost:8080. Load the images with gradio, hit run and visualize the reconstruction as it's being made in the viser tab.
 
 > [!NOTE]
-> `demo.py` is installed as `must3r_demo` (or `must3r_demo.exe`) when must3r is installed to `site-packages`. 
+> `demo.py` is installed as `must3r_demo` (or `must3r_demo.exe`) when must3r is installed to `site-packages`.
 
 ```bash
 python demo.py --weights /path/to/MUSt3R_512.pth --retrieval /path/to/MUSt3R_512_retrieval_trainingfree.pth --image_size 512 --viser
@@ -163,22 +188,22 @@ python demo.py --weights /path/to/MUSt3R_512.pth --retrieval /path/to/MUSt3R_512
 > [!Note]
 >  IMPORTANT: Explanation of the demo parameters
 
-1) select images:  
+1) select images:
      - you can upload images using the gradio.File component.
      - if you use `--allow_local_files`, a second tab will appear: `local_path`. In this tab, you can paste a directory path from your local machine and hit `load` to quickly select all the images inside this directory (not recursive).
 
 2) select global parameters
-     - "Number of refinement iterations" increase it to 1 or 2 to do multiple pass on the keyframes (useful for loop closure)  
-     - "Maximum batch size" -> If you are using a small gpu or you have a lot of images, put 1 to limit the vram usage (IMPORTANT).  
+     - "Number of refinement iterations" increase it to 1 or 2 to do multiple pass on the keyframes (useful for loop closure)
+     - "Maximum batch size" -> If you are using a small gpu or you have a lot of images, put 1 to limit the vram usage (IMPORTANT).
 
-3) select the inference algorithm:  
-  There are 4 Modes implemented. You'll have to select the mode that is most suited to your data:  
+3) select the inference algorithm:
+  There are 4 Modes implemented. You'll have to select the mode that is most suited to your data:
 > [!Note]
->  If your images are unordered, then you **HAVE TO** select `unordered: retrieval` (only available with the --retrieval option). 
+>  If your images are unordered, then you **HAVE TO** select `unordered: retrieval` (only available with the --retrieval option).
 
-- 3.a. for an unordered collection of images, change it to "unordered: retrieval"  
+- 3.a. for an unordered collection of images, change it to "unordered: retrieval"
      - Select the Number of memory images (also called keyframes). For this one, I would say to put as many as possible but to not go above 300, the more images there are, the slower/more memory hungry it'll be.
-     - Leave "Render once" toggled OFF. You can toggle it ON if "Number of refinement iterations" > 0. 
+     - Leave "Render once" toggled OFF. You can toggle it ON if "Number of refinement iterations" > 0.
 - 3.b. for a simple video sequence, you can select "sequence: linspace"
      - Same parameters as 3.a.
 - 3.c. for a longer video sequence : "sequence: slam keyframes"  (selected by default).
@@ -192,12 +217,12 @@ python demo.py --weights /path/to/MUSt3R_512.pth --retrieval /path/to/MUSt3R_512
 ### Online Visual Odometry Demo (open3d)
 
 > [!NOTE]
-> `slam.py` is installed as `must3r_slam` (or `must3r_slam.exe`) when must3r is installed to `site-packages`. 
+> `slam.py` is installed as `must3r_slam` (or `must3r_slam.exe`) when must3r is installed to `site-packages`.
 
 ```bash
 # examples
 # slam demo from a webcam (512 model)
-python slam.py --chkpt /path/to/MUSt3R_512.pth --res 512 --subsamp 4 --gui --input cam:0 
+python slam.py --chkpt /path/to/MUSt3R_512.pth --res 512 --subsamp 4 --gui --input cam:0
 
 # slam demo from a directory of images (224 model)
 python slam.py \

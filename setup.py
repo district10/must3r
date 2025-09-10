@@ -37,7 +37,7 @@ setup(
         'dust3r @ git+https://github.com/naver/dust3r.git@dust3r_setup#egg=dust3r',
         "asmk[cpu] @ git+https://github.com/lojzezust/asmk.git"
     ],
-    python_requires=">=3.11",
+    python_requires=">=3.10",
     extras_require={
         "curope": curope_dep,
         "optional": optional_dep,
