@@ -24,8 +24,10 @@ RUN pip3 install -v tensorboard "pyglet<2" "huggingface-hub[torch]>=0.22" pillow
 RUN pip3 install -v pyrender kapture kapture-localization numpy-quaternion
 RUN pip3 install -v gradio scipy
 
-RUN apt update && apt install libgl1-mesa-glx libglib2.0-0 libsm6 libxext6 libxrender-dev -y && apt clean && rm -rf /var/lib/apt/lists/*
-RUN pip3 install torchaudio[triton] --index-url https://download.pytorch.org/whl/cu126
+ENV HTTP_PROXY=""
+ENV HTTPS_PROXY=""
+# RUN apt update && apt install libgl1-mesa-glx libglib2.0-0 libsm6 libxext6 libxrender-dev -y && apt clean && rm -rf /var/lib/apt/lists/*
+# RUN pip3 install torchaudio[triton] --index-url https://download.pytorch.org/whl/cu126
 
 ENV LD_LIBRARY_PATH=/usr/local/lib/python3.10/dist-packages/torch/lib:$LD_LIBRARY_PATH
 # poselib pycolmap
