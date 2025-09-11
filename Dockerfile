@@ -23,9 +23,11 @@ RUN pip3 install -v roma matplotlib tqdm opencv-python einops trimesh
 RUN pip3 install -v tensorboard "pyglet<2" "huggingface-hub[torch]>=0.22" pillow-heif
 RUN pip3 install -v pyrender kapture kapture-localization numpy-quaternion
 RUN pip3 install -v gradio scipy
+
+RUN apt update && apt install libgl1-mesa-glx libglib2.0-0 libsm6 libxext6 libxrender-dev -y && apt clean && rm -rf /var/lib/apt/lists/*
+RUN pip3 install torchaudio[triton] --index-url https://download.pytorch.org/whl/cu126
+
+ENV LD_LIBRARY_PATH=/usr/local/lib/python3.10/dist-packages/torch/lib:$LD_LIBRARY_PATH
 # poselib pycolmap
 
 # ADD dust3r/requirements.txt /naver/must3r/dust3r/requirements.txt
-# ADD dust3r/requirements_optional.txt /naver/must3r/dust3r/requirements_optional.txt
-# RUN micromamba run -n must3r pip3 install -r /naver/must3r/dust3r/requirements.txt
-# RUN micromamba run -n must3r pip3 install -r /naver/must3r/dust3r/requirements_optional.txt
