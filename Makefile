@@ -9,11 +9,9 @@ all:
 clean:
 	rm -rf build dist *.egg-info __pycache__ *.pyc
 
-DOCKER_TAG_RELEASE := docker-registry-ui.tzxland.heiyu.space/must3r-dev:v2025.09.10
+DOCKER_TAG_RELEASE := ghcr.io/district10/must3r/base:v2025.09.14
 docker_build:
 	docker build -t $(DOCKER_TAG_RELEASE) \
-        --build-arg HTTP_PROXY=$$http_proxy \
-        --build-arg HTTPS_PROXY=$$https_proxy \
         -f Dockerfile .
 	docker images $(DOCKER_TAG_RELEASE) --format "{{.Repository}}:{{.Tag}} -> {{.Size}}"
 docker_push:
