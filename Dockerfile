@@ -8,12 +8,12 @@ RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/
 RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 
 RUN pip3 install faiss-cpu
-RUN cd /tmp && git clone --depth=1 https://github.com/jenicek/asmk.git && cd asmk/cython && \
+RUN cd /tmp && git clone --depth=1 https://ghfast.top/https://github.com/jenicek/asmk.git && cd asmk/cython && \
     cythonize *.pyx && cd /tmp && \
     pip3 install /tmp/asmk && \
     rm -rf /tmp/asmk
 
-RUN git clone --depth=1 https://github.com/naver/croco.git /croco && \
+RUN git clone --depth=1 https://ghfast.top/https://github.com/naver/croco.git /croco && \
     cd /croco/models/curope/ && python3 setup.py build_ext --inplace
 
 RUN pip3 install -v roma matplotlib tqdm opencv-python einops trimesh
