@@ -9,7 +9,7 @@ all:
 clean:
 	rm -rf build dist *.egg-info __pycache__ *.pyc
 
-DOCKER_TAG_RELEASE := docker-registry-ui.tzxland.heiyu.space/must3r-dev:v2025.09.14
+DOCKER_TAG_RELEASE := ghcr.io/cubao/must3r-base:v2025.09.14
 docker_build:
 	docker build -t $(DOCKER_TAG_RELEASE) \
         -f Dockerfile .
