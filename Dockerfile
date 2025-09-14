@@ -21,9 +21,9 @@ RUN apt update && apt install libgl1-mesa-glx libglib2.0-0 libsm6 libxext6 libxr
 RUN pip3 install -v pypose
 RUN pip3 install -v "pyglet<2"
 RUN pip3 install -v tensorboard scipy numpy-quaternion
-RUN pip3 install -v "huggingface-hub[torch]>=0.22
-RUN pip3 install -v open3d viser pyaml scikit-learn
-RUN pip3 install -v pillow-heif kapture kapture-localization
-RUN pip3 install -v pyrender gradio
+# RUN pip3 install -v "huggingface-hub[torch]>=0.22"
+# RUN pip3 install -v open3d viser pyaml scikit-learn
+# RUN pip3 install -v pillow-heif kapture kapture-localization
+# RUN pip3 install -v pyrender gradio
 
 ENV LD_LIBRARY_PATH=/usr/local/lib/python3.10/dist-packages/torch/lib:$LD_LIBRARY_PATH
