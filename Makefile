@@ -12,8 +12,6 @@ clean:
 DOCKER_TAG_RELEASE := docker-registry-ui.tzxland.heiyu.space/must3r-dev:v2025.09.14
 docker_build:
 	docker build -t $(DOCKER_TAG_RELEASE) \
-        --build-arg HTTP_PROXY=$$http_proxy \
-        --build-arg HTTPS_PROXY=$$https_proxy \
         -f Dockerfile .
 	docker images $(DOCKER_TAG_RELEASE) --format "{{.Repository}}:{{.Tag}} -> {{.Size}}"
 docker_push:
